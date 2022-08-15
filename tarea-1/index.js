@@ -3,12 +3,22 @@ const $calcular = document.querySelector("#calcular");
 const $reestablecer = document.querySelector("#reestablecer");
 
 function encontrarNumeroMinimo(array) {
-  let numeroMinimo = Math.min(...array);
+  let numeroMinimo = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < numeroMinimo) {
+      numeroMinimo = array[i];
+    }
+  }
   return numeroMinimo;
 }
 
 function encontrarNumeroMaximo(array) {
-  let numeroMaximo = Math.max(...array);
+  let numeroMaximo = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (numeroMaximo < array[i]) {
+      numeroMaximo = array[i];
+    }
+  }
   return numeroMaximo;
 }
 
