@@ -2,32 +2,32 @@ const $siguiente = document.querySelector("#siguiente");
 const $calcular = document.querySelector("#calcular");
 const $reestablecer = document.querySelector("#reestablecer");
 
-function encontrarNumeroMinimo(array) {
-  let numeroMinimo = array[0];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] < numeroMinimo) {
-      numeroMinimo = array[i];
+function encontrarNumeroMinimo(numeros) {
+  let numeroMinimo = numeros[0];
+  for (let i = 0; i < numeros.length; i++) {
+    if (numeros[i] < numeroMinimo) {
+      numeroMinimo = numeros[i];
     }
   }
   return numeroMinimo;
 }
 
-function encontrarNumeroMaximo(array) {
+function encontrarNumeroMaximo(numeros) {
   let numeroMaximo = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (numeroMaximo < array[i]) {
-      numeroMaximo = array[i];
+  for (let i = 0; i < numeros.length; i++) {
+    if (numeroMaximo < numeros[i]) {
+      numeroMaximo = numeros[i];
     }
   }
   return numeroMaximo;
 }
 
-function calcularPromedio(array) {
+function calcularPromedio(numeros) {
   let sumaTotal = 0;
-  for (let i = 0; i < array.length; i++) {
-    sumaTotal += array[i];
+  for (let i = 0; i < numeros.length; i++) {
+    sumaTotal += numeros[i];
   }
-  let promedio = (sumaTotal / array.length).toFixed(2);
+  let promedio = sumaTotal / numeros.length;
   return promedio;
 }
 
@@ -40,9 +40,11 @@ function mostrarElemento($elemento) {
 }
 
 function crearComponenteIntegrante(indice) {
-  const $divInputsIntegrantes = document.querySelector("#inputs-integrantes");
+  const $contenedorComponenteIntegrante = document.querySelector(
+    "#inputs-integrantes"
+  );
 
-  const $nuevoDiv = document.createElement("div");
+  const $integrante = document.createElement("div");
 
   const $nuevoLabel = document.createElement("label");
   $nuevoLabel.textContent = `Edad familiar nº${++indice}: `;
@@ -51,9 +53,9 @@ function crearComponenteIntegrante(indice) {
   $nuevoInput.type = "number";
   $nuevoInput.className = "integrante";
 
-  $nuevoDiv.appendChild($nuevoLabel);
-  $nuevoDiv.appendChild($nuevoInput);
-  $divInputsIntegrantes.appendChild($nuevoDiv);
+  $integrante.appendChild($nuevoLabel);
+  $integrante.appendChild($nuevoInput);
+  $contenedorComponenteIntegrante.appendChild($integrante);
 }
 
 $siguiente.onclick = function () {
@@ -82,7 +84,7 @@ $calcular.onclick = function () {
 
   const integranteMasGrande = encontrarNumeroMaximo(edadesIntegrantes);
   const integranteMasJoven = encontrarNumeroMinimo(edadesIntegrantes);
-  const promedioIntegrantes = calcularPromedio(edadesIntegrantes);
+  const promedioIntegrantes = calcularPromedio(edadesIntegrantes).toFixed(2);
 
   document.querySelector(
     "#integrante-mas-grande"
