@@ -33,8 +33,9 @@ function obtenerPromedioSalarialAnual(salario) {
 }
 
 function obtenerPromedioSalarialMensual(salario) {
+  const MESES_EN_UN_ANIO = 12;
   const salarioAnualPromedio = obtenerPromedioSalarialAnual(salario);
-  return salarioAnualPromedio / 12;
+  return salarioAnualPromedio / MESES_EN_UN_ANIO;
 }
 
 function ocultarElemento(elemento) {
@@ -63,6 +64,14 @@ function crearComponenteIntegrante() {
   $contenedorIntegrantes.appendChild($integrante);
 }
 
+function insertarNumerosEnUnArray(array, array1) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].value != 0) {
+      array1.push(Number(array[i].value));
+    }
+  }
+}
+
 $agregarIntegrante.onclick = function () {
   crearComponenteIntegrante();
   mostrarElemento($calcularSalarios);
@@ -84,11 +93,9 @@ $eliminarIntegrante.onclick = function () {
 $calcularSalarios.onclick = function () {
   const $integrantesNodeList = document.querySelectorAll(".integrante > input");
   const salariosIntegrantes = [];
-  for (let i = 0; i < $integrantesNodeList.length; i++) {
-    if ($integrantesNodeList[i].value != 0) {
-      salariosIntegrantes.push(Number($integrantesNodeList[i].value));
-    }
-  }
+
+  insertarNumerosEnUnArray($integrantesNodeList, salariosIntegrantes);
+
   const salarioMaximoAnual = obtenerSalarioMaximoAnual(salariosIntegrantes);
   const salarioMinimoAnual = obtenerSalarioMinimoAnual(salariosIntegrantes);
   const promedioSalarialAnual =
