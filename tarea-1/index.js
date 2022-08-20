@@ -115,3 +115,21 @@ $reestablecer.onclick = function () {
   ocultarElemento($reestablecer);
   return false;
 };
+
+function validarIntegrantes(integrantes) {
+  if (integrantes.toString().length === 0) {
+    return "Este campo debe tener al menos un digito";
+  }
+  if (integrantes.toString().length >= 3) {
+    return "Este campo debe tener menos de 3 digitos";
+  }
+}
+
+function validarEdad(edad) {
+  if (edad.toString().length === 0) {
+    return "Este campo debe tener al menos un digito";
+  }
+  if (edad.toString().length >= 3) {
+    return "Este campo debe tener menos de 3 digitos";
+  }
+}
