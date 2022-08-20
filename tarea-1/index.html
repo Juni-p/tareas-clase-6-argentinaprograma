@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tarea-1-clase-6</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <form id="datos-familiares">
+    <label for="integrantes">Cantidad de integrantes en tu familia: </label>
+    <input type="number" name="integrantes" id="cantidad-integrantes">
+    <input type="submit" value="Siguiente" id="siguiente">
+
+    <div id="inputs-integrantes"></div>
+
+    <button id="calcular" class="ocultar">calcular</button>
+    <button id="reestablecer" type="reset" class="ocultar">Reestablecer</button>
+
+    <div id="datos-integrantes">
+      <p id="integrante-mas-grande"></p>
+      <p id="integrante-mas-joven"></p>
+      <p id="integrantes-promedio-edad"></p>
+    </div>
+  </form>
+  <script src="index.js"></script>
+</body>
+
+</html>
