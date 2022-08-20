@@ -123,3 +123,12 @@ $resetearDatos.onclick = function () {
 
   return false;
 };
+
+function validarSalario(salario) {
+  if (salario.toString().length === 0) {
+    return "Este campo debe tener al menos un digito";
+  }
+  if (salario.toString().length >= 10) {
+    return "Este campo debe tener menos de 10 digitos";
+  }
+}
