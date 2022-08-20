@@ -64,12 +64,12 @@ function crearComponenteIntegrante() {
   $contenedorIntegrantes.appendChild($integrante);
 }
 
-function insertarNumerosEnUnArray(array, array1) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].value != 0) {
-      array1.push(Number(array[i].value));
-    }
+function insertarNumerosEnUnArray(numeros) {
+  const salariosIntegrantes = [];
+  for (let i = 0; i < numeros.length; i++) {
+    salariosIntegrantes.push(Number(numeros[i].value));
   }
+  return salariosIntegrantes;
 }
 
 $agregarIntegrante.onclick = function () {
@@ -92,9 +92,8 @@ $eliminarIntegrante.onclick = function () {
 
 $calcularSalarios.onclick = function () {
   const $integrantesNodeList = document.querySelectorAll(".integrante > input");
-  const salariosIntegrantes = [];
 
-  insertarNumerosEnUnArray($integrantesNodeList, salariosIntegrantes);
+  const salariosIntegrantes = insertarNumerosEnUnArray($integrantesNodeList);
 
   const salarioMaximoAnual = obtenerSalarioMaximoAnual(salariosIntegrantes);
   const salarioMinimoAnual = obtenerSalarioMinimoAnual(salariosIntegrantes);
